@@ -57,7 +57,7 @@ public class ConsultantControl {
      *     "extra":{
      *         "totalSize":"2",
      *         "size":"2",
-     *         "totalPage":"6",
+     *         "totalPage":"3",
      *         "page":"2"
      *     }
      *     "errorMsg":null
@@ -74,7 +74,7 @@ public class ConsultantControl {
         rem.setContent(retpage.getRecords());
         JSONObject jo = new JSONObject();
         jo.put("page",retpage.getCurrent());
-        jo.put("totalPage",retpage.getTotal());
+        jo.put("totalPage",retpage.getPages());
         jo.put("size",retpage.getRecords().size());
         jo.put("totalSize",retpage.getSize());
         rem.setExtra(jo);
