@@ -17,6 +17,9 @@
     <update id="updateUser" parameterType="com.pl.hengda.app.model.HengdaUser" >
        update hengdauser set username=#{username},phone=#{phone},channel=#{channel} where userid = #{userid}
     </update>
+    <update id="updateUserHouse" parameterType="Map" >
+        update user_house set  houseid=#{houseid} where userid = #{userid}
+    </update>
     <select id="getUserByPhone" resultType="com.pl.hengda.app.model.HengdaUser" parameterType="Map">
         select * from hengdauser where phone = #{phone}
     </select>
@@ -24,10 +27,20 @@
          insert into hengdauser(userid,username,phone,channel)
         VALUES (#{userid},#{username},#{phone},#{channel})
     </insert>
+    <insert id="addUserHouse"  parameterType="Map">
+        insert into user_house(id,userid,houseid)
+        VALUES (#{id},#{userid},#{houseid})
+    </insert>
     <update id="setConidByUserid" parameterType="Map" >
         update hengdauser set consultant=#{conid} where userid = #{userid}
     </update>
     <select id="getConsultanPhoneByUserid" resultType="String" parameterType="Map">
         select phone from zhiyeguwen where id = (SELECT consultant from hengdauser where userid = #{userid} )
+    </select>
+    <select id="getConsultantByUserid" resultType="com.pl.hengda.app.model.Consultant" parameterType="Map">
+        select * from zhiyeguwen where id = (SELECT consultant from hengdauser where userid = #{userid} )
+    </select>
+    <select id="getHouseByUserid" resultType="com.pl.hengda.app.model.House" parameterType="Map">
+        select * from house where id = (SELECT houseid from user_house where userid = #{userid} )
     </select>
 </mapper>

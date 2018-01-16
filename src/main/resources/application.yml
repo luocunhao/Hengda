@@ -7,7 +7,8 @@ server:
 jiguang:
   mastersecret: 4b9b1c29efd1109cfde08b84
   appkey: 24286bbb7fde1ab272b71a6e
-  templateId: 146998
+  templateId: 147949
+  houseNulltemplateId: 147948
 #spring
 spring:
   profiles:
